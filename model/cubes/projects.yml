@@ -1,0 +1,37 @@
+cubes:
+  - name: projects
+    sql_table: ektu.projects
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+
+      - name: funding_source
+        sql: funding_source
+        type: string
+
+      - name: created_at
+        sql: created_at
+        type: time
+
+      - name: modified_at
+        sql: modified_at
+        type: time
+
+    measures:
+      - name: count
+        type: count
+
+      - name: funding_amount
+        sql: funding_amount
+        type: sum
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

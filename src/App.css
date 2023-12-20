@@ -1,0 +1,27 @@
+.page__wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+.page__collapse {
+  /* position: absolute; */
+  bottom: 5%;
+  left: 1%;
+}
+
+.ant-collapse {
+  border: none;
+  border-radius: none;
+}
+
+.ant-collapse > .ant-collapse-item {
+  border-bottom: none;
+}
+
+.ant-collapse-header-text {
+  font-size: x-large;
+}
+
+.ant-collapse .ant-collapse-content {
+  border-top: none;
+}
