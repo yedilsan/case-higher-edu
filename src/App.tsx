@@ -10,7 +10,7 @@ const text = `
 const items: CollapseProps["items"] = [
   {
     key: "1",
-    label: "Graph Panel 1",
+    label: "Образовательные программы",
     children: (
       <div
         style={{
@@ -34,27 +34,27 @@ const items: CollapseProps["items"] = [
   },
   {
     key: "2",
-    label: "This is panel header 2",
+    label: "ППС",
     children: <p>{text}</p>,
   },
   {
     key: "3",
-    label: "This is panel header 3",
+    label: "Студенты",
     children: <p>{text}</p>,
   },
   {
     key: "4",
-    label: "This is panel header 4",
+    label: "Проектная деятельность",
     children: <p>{text}</p>,
   },
   {
     key: "5",
-    label: "This is panel header 5",
+    label: "Трудоустройство выпускников",
     children: <p>{text}</p>,
   },
   {
     key: "6",
-    label: "This is panel header 6",
+    label: "Публикации",
     children: <p>{text}</p>,
   },
 ];
