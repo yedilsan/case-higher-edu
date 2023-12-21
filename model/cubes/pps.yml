@@ -11,6 +11,10 @@ cubes:
         type: number
         primary_key: true
 
+      - name: age
+        sql: age
+        type: number
+
       - name: science_rank
         sql: science_rank
         type: string
@@ -46,4 +50,3 @@ cubes:
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-

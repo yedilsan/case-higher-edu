@@ -1,6 +1,9 @@
-import { CollapseProps, Collapse } from "antd";
+import { CollapseProps, Collapse, Col, Row } from "antd";
 import "./App.css";
 import TreeData from "./components/TreeTable";
+import PpsCitizenship from "./components/Graphs/PpsCitizenship";
+import ScienceRank from "./components/Graphs/ScienceRank";
+import AgeChart from "./components/Graphs/AgeChart";
 
 const text = `
   A dog is a type of domesticated animal.
@@ -35,7 +38,22 @@ const items: CollapseProps["items"] = [
   {
     key: "2",
     label: "ППС",
-    children: <p>{text}</p>,
+    children: (
+      <Row className="charts">
+        <Col className="chart_layout">
+          <PpsCitizenship />
+        </Col>
+        <Col className="chart_layout">
+          <ScienceRank dimension="science_rank" />
+        </Col>
+        <Col className="chart_layout">
+          <ScienceRank dimension="science_degree" />
+        </Col>
+        <Col className="chart_layout">
+          <AgeChart dimension="age" />
+        </Col>
+      </Row>
+    ),
   },
   {
     key: "3",
