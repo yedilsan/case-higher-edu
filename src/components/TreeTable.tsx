@@ -5,9 +5,10 @@ import { useCubeQuery } from "@cubejs-client/react";
 import cubejs from "@cubejs-client/core";
 import { useEffect, useState } from "react";
 
-const cubejsApi = cubejs("YOUR_CUBEJS_API_TOKEN", {
-  apiUrl: "http://localhost:4000/cubejs-api/v1",
-});
+const cubejsApi = cubejs(
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDMwNDI3MTAsImV4cCI6MTcwMzEyOTExMH0.nJF_t1sysATWagqMoo1Yvb4Igdtf7ltrpF51qLnMPB4",
+  { apiUrl: "http://localhost:4000/cubejs-api/v1" }
+);
 
 interface DataType {
   key: React.ReactNode;
