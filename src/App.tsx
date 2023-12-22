@@ -4,6 +4,10 @@ import TreeData from "./components/TreeTable";
 import PpsCitizenship from "./components/Graphs/PPS/PpsCitizenship";
 import ScienceRank from "./components/Graphs/PPS/ScienceRank";
 import AgeChart from "./components/Graphs/PPS/AgeChart";
+import StudLineChart from "./components/Graphs/Students/StudLineChart";
+import StudStackedColChart from "./components/Graphs/Students/StudStackedColChart";
+import StudPieChart from "./components/Graphs/Students/StudPieChart";
+import StudColumnChart from "./components/Graphs/Students/StudColumnChart";
 
 const text = `
   A dog is a type of domesticated animal.
@@ -58,7 +62,28 @@ const items: CollapseProps["items"] = [
   {
     key: "3",
     label: "Студенты",
-    children: <p>{text}</p>,
+    children: (
+      <Row className="charts">
+        <Col className="chart_layout">
+          <StudLineChart dimension="finance_type" />
+        </Col>
+        <Col className="chart_layout">
+          <StudLineChart dimension="specialty" />
+        </Col>
+        <Col className="chart_layout">
+          <StudStackedColChart />
+        </Col>
+        <Col className="chart_layout">
+          <StudColumnChart dimension="citizenship" />
+        </Col>
+        <Col className="chart_layout">
+          <StudPieChart />
+        </Col>
+        <Col className="chart_layout">
+          <StudColumnChart dimension="socially_vulnerable" />
+        </Col>
+      </Row>
+    ),
   },
   {
     key: "4",

@@ -55,6 +55,10 @@ cubes:
         sql: citizenship
         type: string
 
+      - name: admission_year
+        sql: admission_year
+        type: number
+
       - name: created_at
         sql: created_at
         type: time
@@ -70,4 +74,3 @@ cubes:
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
