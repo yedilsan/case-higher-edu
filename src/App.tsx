@@ -1,9 +1,9 @@
 import { CollapseProps, Collapse, Col, Row } from "antd";
 import "./App.css";
 import TreeData from "./components/TreeTable";
-import PpsCitizenship from "./components/Graphs/PpsCitizenship";
-import ScienceRank from "./components/Graphs/ScienceRank";
-import AgeChart from "./components/Graphs/AgeChart";
+import PpsCitizenship from "./components/Graphs/PPS/PpsCitizenship";
+import ScienceRank from "./components/Graphs/PPS/ScienceRank";
+import AgeChart from "./components/Graphs/PPS/AgeChart";
 
 const text = `
   A dog is a type of domesticated animal.

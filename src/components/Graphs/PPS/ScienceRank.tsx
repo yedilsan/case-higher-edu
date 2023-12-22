@@ -4,7 +4,6 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import cubejs from "@cubejs-client/core";
-import "../component.css";
 
 interface DataItem {
   value: number;
