@@ -120,6 +120,30 @@ const ScienceRank: React.FC<TreeTableProps> = ({ dimension }) => {
       height: am5.percent(50),
     });
 
+    chart.children.unshift(
+      am5.Label.new(root, {
+        text: `${
+          dimension === "science_rank"
+            ? "Количество ППС по ученому званию"
+            : dimension === "science_degree"
+            ? "Количество ППС по ученой степени "
+            : ""
+        }`,
+        fontSize: 22,
+        fontWeight: "400",
+        textAlign: "center",
+        x: am5.percent(20),
+        centerX: am5.percent(20),
+        paddingTop: 0,
+        paddingBottom: 20,
+      })
+    );
+
+    yAxis.get("renderer").labels.template.setAll({
+      oversizedBehavior: "truncate",
+      maxWidth: 150,
+    });
+
     chart.set(
       "scrollbarY",
       am5.Scrollbar.new(root, {

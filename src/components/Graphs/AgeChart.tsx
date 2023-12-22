@@ -123,6 +123,20 @@ const AgeChart: React.FC<TreeTableProps> = ({ dimension }) => {
     series.columns.template.set("strokeWidth", 5);
     series.columns.template.set("fillOpacity", 0.7);
 
+    chart.children.unshift(
+      am5.Label.new(root, {
+        text: "Количество ППС по возрастной категории",
+        fontSize: 22,
+        fontWeight: "400",
+        textAlign: "center",
+        x: am5.percent(20),
+        y: am5.percent(10),
+        centerX: am5.percent(20),
+        paddingTop: 0,
+        paddingBottom: 20,
+      })
+    );
+
     // Add scrollbar
     // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
     chart.set(

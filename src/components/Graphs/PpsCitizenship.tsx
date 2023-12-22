@@ -63,6 +63,19 @@ const PpsCitizenship = () => {
       centerY: 0,
     });
 
+    chart.children.unshift(
+      am5.Label.new(root, {
+        text: "Гражданство преподавателей ",
+        fontSize: 22,
+        fontWeight: "400",
+        textAlign: "center",
+        x: am5.percent(20),
+        centerX: am5.percent(20),
+        paddingTop: 15,
+        paddingBottom: 0,
+      })
+    );
+
     series.data.setAll(data);
 
     const legend = chart.children.push(
