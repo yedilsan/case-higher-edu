@@ -148,6 +148,25 @@ const StudColumnChart: React.FC<TreeTableProps> = ({ dimension }) => {
     );
     legend.data.setAll(chart.series.values);
 
+    chart.children.unshift(
+      am5.Label.new(root, {
+        text: `${
+          dimension === "citizenship"
+            ? "Контингент студентов"
+            : dimension === "socially_vulnerable"
+            ? "Принадлежность к социально-уязвимым слоям"
+            : ""
+        }`,
+        fontSize: 22,
+        fontWeight: "400",
+        textAlign: "center",
+        x: am5.percent(20),
+        centerX: am5.percent(20),
+        paddingTop: 0,
+        paddingBottom: 20,
+      })
+    );
+
     // Make stuff animate on load
     // https://www.amcharts.com/docs/v5/concepts/animations/
     chart.appear(1000, 100);

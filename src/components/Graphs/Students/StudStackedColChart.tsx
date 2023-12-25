@@ -5,10 +5,9 @@ import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import cubejs from "@cubejs-client/core";
 
-interface DataItem {
-  count: number;
-  admYear: string;
-  studLang: string;
+interface LanguageData {
+  year: string;
+  [language: string]: string | number;
 }
 
 const cubejsApi = cubejs(
@@ -22,7 +21,7 @@ const StudStackedColChart = () => {
       measures: ["student.count"],
       dimensions: ["student.admission_year", "student.study_language"],
       order: {
-        "student.count": "asc",
+        "student.admission_year": "asc",
       },
     },
     { cubejsApi }
@@ -69,29 +68,29 @@ const StudStackedColChart = () => {
       })
     );
 
-    // const data: DataItem[] = resultSet.tablePivot().map((row) => ({
-    //   count: Number(row["student.count"]),
-    //   admYear: String(row["student.admission_year"]),
-    //   studLang: String(row["student.study_language"]),
-    // }));
+    const pivotData = resultSet.tablePivot().map((row) => ({
+      year: String(row["student.admission_year"]),
+      lang: String(row["student.study_language"]),
+      count: Number(row["student.count"]),
+    }));
 
-    const data = [
-      {
-        year: "2021",
-        europe: 1028,
-        namerica: 780,
+    const data: LanguageData[] = pivotData.reduce(
+      (result: LanguageData[], row) => {
+        const existingYear = result.find((item) => item.year === row.year);
+
+        if (existingYear) {
+          existingYear[row.lang.toLowerCase()] = row.count;
+        } else {
+          result.push({
+            year: row.year,
+            [row.lang.toLowerCase()]: row.count,
+          });
+        }
+
+        return result;
       },
-      {
-        year: "2022",
-        europe: 719,
-        namerica: 624,
-      },
-      {
-        year: "2023",
-        europe: 608,
-        namerica: 546,
-      },
-    ];
+      []
+    );
 
     // Create axes
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
@@ -168,13 +167,22 @@ const StudStackedColChart = () => {
 
       legend.data.push(series);
     }
+    chart.children.unshift(
+      am5.Label.new(root, {
+        text: "Количество обучающихся студентов по году поступления",
+        fontSize: 22,
+        fontWeight: "400",
+        textAlign: "center",
+        x: am5.percent(20),
+        centerX: am5.percent(20),
+        paddingTop: 0,
+        paddingBottom: 20,
+      })
+    );
 
-    makeSeries("Europe", "europe");
-    makeSeries("North America", "namerica");
-    makeSeries("Asia", "asia");
-    makeSeries("Latin America", "lamerica");
-    makeSeries("Middle East", "meast");
-    makeSeries("Africa", "africa");
+    makeSeries("Kazakh", "казахский");
+    makeSeries("Russian", "русский");
+    makeSeries("English", "английский");
 
     // Make stuff animate on load
     // https://www.amcharts.com/docs/v5/concepts/animations/
