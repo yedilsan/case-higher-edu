@@ -98,19 +98,6 @@ const ProjectsChart = () => {
       seriesList.data.setAll(data.filter((item) => item.source === source));
     });
 
-    chart.children.unshift(
-      am5.Label.new(root, {
-        text: "Объем финансирования проектов по источнику ",
-        fontSize: 22,
-        fontWeight: "400",
-        textAlign: "center",
-        x: am5.percent(50),
-        centerX: am5.percent(50),
-        paddingTop: 0,
-        paddingBottom: 0,
-      })
-    );
-
     chart.appear(1000, 100);
 
     return () => {
