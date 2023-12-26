@@ -22,3 +22,39 @@
   overflow: auto;
   min-width: 400px;
 }
+
+.page__wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+.page__collapse {
+  /* position: absolute; */
+  bottom: 5%;
+  left: 1%;
+}
+
+h3 {
+  font-weight: 400;
+  margin: 0;
+}
+/*Charts*/
+.charts {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 5px 0px 5px;
+  justify-content: space-between;
+}
+.chart_layout {
+  width: calc(33.33% - 20px);
+  max-width: 100%;
+  height: calc(50vh - 20px);
+  min-height: 50%;
+  overflow: auto;
+  white-space: nowrap;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
+}
