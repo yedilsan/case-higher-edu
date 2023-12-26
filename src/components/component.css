@@ -2,12 +2,16 @@
   width: 25vw;
 }
 .chart {
-  width: 100%;
+  width: 30vw;
   height: 100%;
   max-width: none;
   max-height: none;
   overflow: auto;
   min-width: 400px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .chart_full {
