@@ -67,19 +67,6 @@ const ProjectsChart = () => {
     const cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
     cursor.lineY.set("visible", false);
 
-    // Create axes
-    // const xAxis = chart.xAxes.push(
-    //   am5xy.DateAxis.new(root, {
-    //     maxDeviation: 0.3,
-    //     baseInterval: {
-    //       timeUnit: "year",
-    //       count: 1,
-    //     },
-    //     renderer: am5xy.AxisRendererX.new(root, { minorGridEnabled: true }),
-    //     tooltip: am5.Tooltip.new(root, {}),
-    //   })
-    // );
-
     const xAxis = chart.xAxes.push(
       am5xy.CategoryAxis.new(root, {
         categoryField: "year",
