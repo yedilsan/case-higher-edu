@@ -4,17 +4,12 @@ import * as am5 from "@amcharts/amcharts5";
 import * as am5xy from "@amcharts/amcharts5/xy";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import am5themes_Responsive from "@amcharts/amcharts5/themes/Responsive";
-import cubejs from "@cubejs-client/core";
+import cubejsApi from "../../cubejsConfig";
 
 interface DataItem {
   value: number;
   age: number;
 }
-
-const cubejsApi = cubejs(
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDMwNDI3MTAsImV4cCI6MTcwMzEyOTExMH0.nJF_t1sysATWagqMoo1Yvb4Igdtf7ltrpF51qLnMPB4",
-  { apiUrl: "http://localhost:4000/cubejs-api/v1" }
-);
 
 interface TreeTableProps {
   dimension: string;

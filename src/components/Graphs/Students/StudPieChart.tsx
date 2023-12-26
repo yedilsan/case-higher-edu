@@ -3,17 +3,12 @@ import { useCubeQuery } from "@cubejs-client/react";
 import * as am5 from "@amcharts/amcharts5";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import * as am5percent from "@amcharts/amcharts5/percent";
-import cubejs from "@cubejs-client/core";
+import cubejsApi from "../../cubejsConfig";
 
 interface DataItem {
   value: number;
   category: string;
 }
-
-const cubejsApi = cubejs(
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDMwNDI3MTAsImV4cCI6MTcwMzEyOTExMH0.nJF_t1sysATWagqMoo1Yvb4Igdtf7ltrpF51qLnMPB4",
-  { apiUrl: "http://localhost:4000/cubejs-api/v1" }
-);
 
 const StudPieChart = () => {
   const { resultSet, isLoading, error } = useCubeQuery(

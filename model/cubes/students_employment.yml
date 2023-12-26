@@ -11,6 +11,14 @@ cubes:
         type: number
         primary_key: true
 
+      - name: year
+        sql: year
+        type: number
+
+      - name: percent
+        sql: percent
+        type: number
+
       - name: specialty
         sql: specialty
         type: string
@@ -34,4 +42,3 @@ cubes:
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
