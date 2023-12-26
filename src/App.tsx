@@ -11,11 +11,6 @@ import StudColumnChart from "./components/Graphs/Students/StudColumnChart";
 import ProjectsChart from "./components/Graphs/ProjectActivities/ProjectsChart";
 import StudentEmployment from "./components/Graphs/StudentEmployment/StudentEmployment";
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
 const items: CollapseProps["items"] = [
   {
     key: "1",
@@ -94,7 +89,10 @@ const items: CollapseProps["items"] = [
       <div
         style={{ margin: "10px", display: "flex", justifyContent: "center" }}
       >
-        <ProjectsChart />
+        <div>
+          <h3>Объем финансирования проектов по источнику</h3>
+          <ProjectsChart />
+        </div>
       </div>
     ),
   },
@@ -105,14 +103,17 @@ const items: CollapseProps["items"] = [
       <div
         style={{ margin: "10px", display: "flex", justifyContent: "center" }}
       >
-        <StudentEmployment />
+        <div>
+          <h3>Показатели трудоустройства выпускников в процентах</h3>
+          <StudentEmployment />
+        </div>
       </div>
     ),
   },
   {
     key: "6",
     label: "Публикации",
-    children: <p>{text}</p>,
+    children: <p>Нет данных</p>,
   },
 ];
 

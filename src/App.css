@@ -9,6 +9,9 @@
   left: 1%;
 }
 
+h3 {
+  font-weight: 400;
+}
 .ant-collapse {
   border: none;
   border-radius: none;
