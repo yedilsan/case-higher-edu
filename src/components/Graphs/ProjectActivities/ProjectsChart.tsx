@@ -43,8 +43,6 @@ const ProjectsChart = () => {
       year: Number(row["projects.year"]),
     }));
 
-    data.sort((a, b) => a.year - b.year);
-
     const root = am5.Root.new("ProjectsChart");
 
     // Set themes
