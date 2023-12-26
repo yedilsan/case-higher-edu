@@ -8,6 +8,7 @@ import StudLineChart from "./components/Graphs/Students/StudLineChart";
 import StudStackedColChart from "./components/Graphs/Students/StudStackedColChart";
 import StudPieChart from "./components/Graphs/Students/StudPieChart";
 import StudColumnChart from "./components/Graphs/Students/StudColumnChart";
+import ProjectsChart from "./components/Graphs/ProjectActivities/ProjectsChart";
 
 const text = `
   A dog is a type of domesticated animal.
@@ -88,7 +89,13 @@ const items: CollapseProps["items"] = [
   {
     key: "4",
     label: "Проектная деятельность",
-    children: <p>{text}</p>,
+    children: (
+      <div
+        style={{ margin: "10px", display: "flex", justifyContent: "center" }}
+      >
+        <ProjectsChart />
+      </div>
+    ),
   },
   {
     key: "5",

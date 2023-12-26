@@ -15,6 +15,10 @@ cubes:
         sql: funding_source
         type: string
 
+      - name: year
+        sql: year
+        type: string
+
       - name: created_at
         sql: created_at
         type: time
@@ -34,4 +38,3 @@ cubes:
     pre_aggregations:
       # Pre-aggregation definitions go here.
       # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
-
