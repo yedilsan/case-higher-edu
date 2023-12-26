@@ -30,10 +30,25 @@ const StudentEmployment = () => {
       return;
     }
 
-    const data: DataItem[] = resultSet.tablePivot().map((row) => ({
+    const rawData: DataItem[] = resultSet.tablePivot().map((row) => ({
       value: Number(row["students_employment.percent"]),
       year: Number(row["students_employment.year"]),
     }));
+
+    const yearToDataMap = new Map<number, number[]>();
+    rawData.forEach(({ year, value }) => {
+      if (!yearToDataMap.has(year)) {
+        yearToDataMap.set(year, []);
+      }
+      yearToDataMap.get(year)?.push(value);
+    });
+
+    const data: DataItem[] = Array.from(yearToDataMap.entries()).map(
+      ([year, values]) => ({
+        year,
+        value: values.reduce((sum, val) => sum + val, 0) / values.length,
+      })
+    );
 
     /* Chart code */
     // Create root element
@@ -78,28 +93,28 @@ const StudentEmployment = () => {
     xAxis.data.setAll(data);
     yAxis.data.setAll(data);
 
-    // Add series
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
     const series = chart.series.push(
       am5xy.LineSeries.new(root, {
         name: "Series",
         xAxis: xAxis,
         yAxis: yAxis,
         valueYField: "value",
-        valueXField: "year",
+        categoryXField: "year",
         tooltip: am5.Tooltip.new(root, {
-          labelText: "{value}",
+          labelText: `{value}%`,
         }),
       })
     );
 
-    series.strokes.template.setAll({
-      strokeWidth: 2,
-    });
-
-    series.get("tooltip")?.get("background")?.set("fillOpacity", 0.5);
-
     series.data.setAll(data);
+
+    // Add scrollbar
+    chart.set(
+      "scrollbarX",
+      am5.Scrollbar.new(root, {
+        orientation: "horizontal",
+      })
+    );
 
     // Make stuff animate on load
     // https://www.amcharts.com/docs/v5/concepts/animations/
