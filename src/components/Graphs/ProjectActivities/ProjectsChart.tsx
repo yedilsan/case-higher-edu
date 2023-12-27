@@ -64,6 +64,7 @@ const ProjectsChart = () => {
       am5xy.CategoryAxis.new(root, {
         categoryField: "year",
         renderer: am5xy.AxisRendererX.new(root, {}),
+        marginBottom: 20,
       })
     );
 
@@ -97,6 +98,22 @@ const ProjectsChart = () => {
       // Set data for each series
       seriesList.data.setAll(data.filter((item) => item.source === source));
     });
+
+    const legend = chart.children.push(
+      am5.Legend.new(root, {
+        x: am5.percent(50),
+        y: am5.percent(100),
+        centerX: am5.percent(50),
+        layout: root.horizontalLayout,
+      })
+    );
+
+    legend.labels.template.setAll({
+      maxWidth: 150,
+      oversizedBehavior: "truncate",
+    });
+
+    legend.data.setAll(chart.series.values);
 
     chart.appear(1000, 100);
 
