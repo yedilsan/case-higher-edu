@@ -119,7 +119,7 @@ const StudColumnChart: React.FC<TreeTableProps> = ({ dimension }) => {
         categoryXField: "dimension",
         tooltip: am5.Tooltip.new(root, {
           pointerOrientation: "horizontal",
-          labelText: "{name} in {categoryX}: {valueY} {info}",
+          labelText: "{valueY} {info}",
         }),
       })
     );
