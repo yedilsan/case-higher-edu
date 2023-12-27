@@ -105,7 +105,7 @@ const StudLineChart: React.FC<TreeTableProps> = ({ dimension }) => {
         sequencedInterpolation: true,
         tooltip: am5.Tooltip.new(root, {
           pointerOrientation: "horizontal",
-          labelText: "[bold]{name}[/]\n{categoryY}: {valueX}",
+          labelText: "{categoryY}: {valueX}",
         }),
       })
     );
