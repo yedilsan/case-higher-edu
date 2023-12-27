@@ -57,3 +57,12 @@ h3 {
     width: 100%;
   }
 }
+
+/*Filter*/
+.ant-modal-content {
+  height: 100vh;
+}
+
+.ant-modal {
+  padding-bottom: 0;
+}

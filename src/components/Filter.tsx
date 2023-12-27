@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Modal, Typography, Select } from "antd";
+import "./component.css";
 
 const Filter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,20 +41,21 @@ const Filter = () => {
         onOk={handleOk}
         onCancel={handleCancel}
         style={{ position: "absolute", top: 0, right: 0 }}
-        bodyStyle={{ height: "90vh", overflowY: "auto" }}
       >
-        <Typography.Title level={5}>ВУЗ:</Typography.Title>
-        <Select
-          defaultValue="ВКГТУ им. Д.Серикбаева"
-          style={{ width: "100%" }}
-          onChange={handleChange}
-          options={[
-            {
-              value: "ektu",
-              label: "ВКГТУ им. Д.Серикбаева",
-            },
-          ]}
-        />
+        <div>
+          <Typography.Title level={5}>ВУЗ:</Typography.Title>
+          <Select
+            defaultValue="ВКГТУ им. Д.Серикбаева"
+            style={{ width: "100%" }}
+            onChange={handleChange}
+            options={[
+              {
+                value: "ektu",
+                label: "ВКГТУ им. Д.Серикбаева",
+              },
+            ]}
+          />
+        </div>
       </Modal>
     </>
   );
