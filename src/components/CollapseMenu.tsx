@@ -16,14 +16,7 @@ const items: CollapseProps["items"] = [
     key: "1",
     label: "Образовательные программы",
     children: (
-      <div
-        style={{
-          display: "flex",
-          gap: "10vw",
-          justifyContent: "space-around",
-          flexWrap: "wrap",
-        }}
-      >
+      <div className="tree-wrapper">
         <div>
           <TreeData level="Бакалавриат" />
         </div>
