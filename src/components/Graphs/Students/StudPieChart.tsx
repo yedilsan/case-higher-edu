@@ -77,10 +77,17 @@ const StudPieChart = () => {
       am5.Legend.new(root, {
         centerX: am5.percent(50),
         x: am5.percent(50),
-        marginTop: 15,
-        marginBottom: 15,
+        layout: am5.GridLayout.new(root, {
+          maxColumns: 2,
+          fixedWidthGrid: true,
+        }),
       })
     );
+
+    legend.labels.template.setAll({
+      maxWidth: 150,
+      oversizedBehavior: "wrap",
+    });
 
     legend.data.setAll(series.dataItems);
 
