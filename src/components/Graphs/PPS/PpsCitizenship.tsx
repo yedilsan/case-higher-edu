@@ -55,6 +55,7 @@ const PpsCitizenship = () => {
       textType: "circular",
       centerX: 0,
       centerY: 0,
+      text: "{category}: {value}",
     });
 
     chart.children.unshift(
