@@ -84,7 +84,6 @@ const PpsCitizenship = () => {
 
     legend.labels.template.setAll({
       maxWidth: 150,
-      //centerY: 0, // if we want labels to be top-aligned
       oversizedBehavior: "wrap",
     });
 
