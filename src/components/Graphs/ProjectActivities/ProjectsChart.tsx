@@ -95,6 +95,10 @@ const ProjectsChart = () => {
         })
       );
 
+      seriesList.strokes.template.setAll({
+        strokeWidth: 2,
+      });
+
       // Set data for each series
       seriesList.data.setAll(data.filter((item) => item.source === source));
     });

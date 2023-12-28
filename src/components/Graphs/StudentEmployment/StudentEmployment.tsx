@@ -110,6 +110,10 @@ const StudentEmployment = () => {
       })
     );
 
+    series.strokes.template.setAll({
+      strokeWidth: 2,
+    });
+
     series.data.setAll(data);
 
     // Add scrollbar
