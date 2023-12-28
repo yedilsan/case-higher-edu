@@ -93,7 +93,7 @@ const StudColumnChart: React.FC<TreeTableProps> = ({ dimension }) => {
     xAxis.data.setAll(data);
 
     xAxis.get("renderer").labels.template.setAll({
-      oversizedBehavior: "truncate",
+      oversizedBehavior: "hide",
       maxWidth: 150,
     });
 
