@@ -13,7 +13,11 @@ interface DataItem {
 const StudentEmployment = () => {
   const { resultSet, isLoading, error } = useCubeQuery(
     {
-      dimensions: ["students_employment.year", "students_employment.percent"],
+      dimensions: [
+        "students_employment.year",
+        "students_employment.percent",
+        "students_employment.specialty",
+      ],
       order: {
         "students_employment.year": "asc",
       },
