@@ -51,8 +51,8 @@ const ScienceRank: React.FC<TreeTableProps> = ({ dimension }) => {
       am5xy.XYChart.new(root, {
         panX: false,
         panY: false,
-        wheelX: "panX",
-        wheelY: "zoomX",
+        wheelX: "panY",
+        wheelY: "zoomY",
         paddingLeft: 0,
         layout: root.verticalLayout,
       })
