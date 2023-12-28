@@ -93,7 +93,7 @@ const StudColumnChart: React.FC<TreeTableProps> = ({ dimension }) => {
     xAxis.data.setAll(data);
 
     xAxis.get("renderer").labels.template.setAll({
-      oversizedBehavior: "wrap",
+      oversizedBehavior: "truncate",
       maxWidth: 150,
     });
 
@@ -135,13 +135,6 @@ const StudColumnChart: React.FC<TreeTableProps> = ({ dimension }) => {
 
     // Add legend
     // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-    const legend = chart.children.push(
-      am5.Legend.new(root, {
-        centerX: am5.p50,
-        x: am5.p50,
-      })
-    );
-    legend.data.setAll(chart.series.values);
 
     chart.children.unshift(
       am5.Label.new(root, {
