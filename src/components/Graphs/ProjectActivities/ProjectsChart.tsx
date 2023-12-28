@@ -90,7 +90,7 @@ const ProjectsChart = () => {
           valueYField: "value",
           categoryXField: "year",
           tooltip: am5.Tooltip.new(root, {
-            labelText: `{name}: {valueY}тг`,
+            labelText: `{year}. {name}: {valueY}тг`,
           }),
         })
       );
@@ -118,6 +118,13 @@ const ProjectsChart = () => {
     });
 
     legend.data.setAll(chart.series.values);
+
+    chart.set(
+      "scrollbarX",
+      am5.Scrollbar.new(root, {
+        orientation: "horizontal",
+      })
+    );
 
     chart.appear(1000, 100);
 
