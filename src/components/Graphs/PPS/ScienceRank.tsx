@@ -145,17 +145,6 @@ const ScienceRank: React.FC<TreeTableProps> = ({ dimension }) => {
       })
     );
 
-    // Add legend
-    // https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-    const legend = chart.children.push(
-      am5.Legend.new(root, {
-        centerX: am5.p50,
-        x: am5.p50,
-      })
-    );
-
-    legend.data.setAll(chart.series.values);
-
     // Add cursor
     // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
     const cursor = chart.set(
