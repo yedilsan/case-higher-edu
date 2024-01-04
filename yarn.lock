@@ -7,10 +7,10 @@
   "resolved" "https://registry.npmjs.org/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz"
   "version" "1.2.6"
 
-"@amcharts/amcharts5@^5.7.2":
-  "integrity" "sha512-+H8zT66vs1m9QAARFA+hDOmBo0lCyerD3E+JI3kW04Nf3VAtXd7WqMepW0GaaDLXM3OKpqtXi69VrtnVqXEw+w=="
-  "resolved" "https://registry.npmjs.org/@amcharts/amcharts5/-/amcharts5-5.7.2.tgz"
-  "version" "5.7.2"
+"@amcharts/amcharts5@^5.7.4":
+  "integrity" "sha512-gFqE6aYLWAcwhbXEF6r9nHFmWBlyXh/J5aN8Fr11q7Pp/J7KdqtXK4TRb1XZbVp25PY65dgD/f2auEEQYX42Ug=="
+  "resolved" "https://registry.npmjs.org/@amcharts/amcharts5/-/amcharts5-5.7.4.tgz"
+  "version" "5.7.4"
   dependencies:
     "@types/d3" "^7.0.0"
     "@types/d3-chord" "^3.0.0"
