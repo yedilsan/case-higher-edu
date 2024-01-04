@@ -36,7 +36,7 @@ const columns: ColumnsType<DataType> = [
   },
 ];
 
-const TreeTable: React.FC<TreeTableProps> = ({ level }) => {
+const TreeTable = ({ level }: TreeTableProps) => {
   const [data, setData] = useState<DataType[]>([]);
 
   const buildTree = (rows: SpecialtyData[]): DataType[] => {
