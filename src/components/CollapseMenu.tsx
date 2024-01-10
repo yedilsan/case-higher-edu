@@ -99,6 +99,7 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'student.count',
 							dimension: ['student.admission_year', 'student.study_language'],
+							orderBy: ['student.admission_year', 'asc'],
 							title: 'Количество обучающихся студентов по году поступления',
 						}}
 					/>
@@ -136,12 +137,33 @@ const items: CollapseProps['items'] = [
 	{
 		key: '4',
 		label: 'Проектная деятельность',
-		children: <ProjectsChart />,
+		children: (
+			<ProjectsChart
+				filters={{
+					measures: 'projects.funding_amount',
+					dimension: ['projects.funding_source', 'projects.year'],
+					orderBy: ['projects.year', 'asc'],
+					title: 'Объем финансирования проектов по источнику',
+				}}
+			/>
+		),
 	},
 	{
 		key: '5',
 		label: 'Трудоустройство выпускников',
-		children: <StudentEmployment />,
+		children: (
+			<StudentEmployment
+				filters={{
+					dimension: [
+						'students_employment.year',
+						'students_employment.percent',
+						'students_employment.specialty',
+					],
+					orderBy: ['students_employment.year', 'asc'],
+					title: 'Показатели трудоустройства выпускников в процентах',
+				}}
+			/>
+		),
 	},
 	{
 		key: '6',
