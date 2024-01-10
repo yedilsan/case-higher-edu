@@ -33,7 +33,13 @@ const items: CollapseProps['items'] = [
 		children: (
 			<Row className='charts'>
 				<Col className='chart_layout'>
-					<PieChart measures='pps.count' dimension='pps.citizenship' />
+					<PieChart
+						filters={{
+							measures: 'pps.count',
+							dimension: 'pps.citizenship',
+							title: 'Гражданство преподавателей',
+						}}
+					/>
 				</Col>
 				<Col className='chart_layout'>
 					<HorizontalBarChart
@@ -96,8 +102,11 @@ const items: CollapseProps['items'] = [
 				</Col>
 				<Col className='chart_layout'>
 					<PieChart
-						measures='student.count'
-						dimension='student.last_education_type'
+						filters={{
+							measures: 'student.count',
+							dimension: 'student.last_education_type',
+							title: 'Вид учебного заведения (предыдущее образование)',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>

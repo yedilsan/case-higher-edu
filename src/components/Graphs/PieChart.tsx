@@ -11,11 +11,15 @@ interface DataItem {
 }
 
 interface PieChartProps {
-	measures: string;
-	dimension: string;
+	filters: {
+		measures: string;
+		dimension: string;
+		title: string;
+	};
 }
 
-const PieChart = ({ measures, dimension }: PieChartProps) => {
+const PieChart = ({ filters }: PieChartProps) => {
+	const { measures, dimension, title } = filters;
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],
@@ -71,13 +75,7 @@ const PieChart = ({ measures, dimension }: PieChartProps) => {
 
 		chart.children.unshift(
 			am5.Label.new(root, {
-				text: `${
-					dimension == 'pps.citizenship'
-						? 'Гражданство преподавателей '
-						: dimension == 'student.last_education_type'
-						? 'Вид учебного заведения (предыдущее образование) '
-						: ''
-				}`,
+				text: `${title}`,
 				fontSize: 22,
 				fontWeight: '400',
 				textAlign: 'center',
@@ -114,7 +112,7 @@ const PieChart = ({ measures, dimension }: PieChartProps) => {
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error, dimension, measures, rootId]);
+	}, [resultSet, isLoading, error, dimension, measures, rootId, title]);
 
 	return <div id={rootId} className='chart'></div>;
 };
