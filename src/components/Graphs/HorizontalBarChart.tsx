@@ -11,11 +11,15 @@ interface DataItem {
 }
 
 interface BarChartProps {
-	measures: string;
-	dimension: string;
+	filters: {
+		measures: string;
+		dimension: string;
+		title: string;
+	};
 }
 
-const HorizontalBarChart = ({ measures, dimension }: BarChartProps) => {
+const HorizontalBarChart = ({ filters }: BarChartProps) => {
+	const { measures, dimension, title } = filters;
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],
@@ -117,17 +121,7 @@ const HorizontalBarChart = ({ measures, dimension }: BarChartProps) => {
 
 		chart.children.unshift(
 			am5.Label.new(root, {
-				text: `${
-					dimension === 'pps.science_rank'
-						? 'Количество ППС по ученому званию'
-						: dimension === 'pps.science_degree'
-						? 'Количество ППС по ученой степени '
-						: dimension === 'student.finance_type'
-						? 'Вид финансирования (по количеству студентов)'
-						: dimension === 'student.specialty'
-						? 'Количество обучающихя студентов по специальности'
-						: ''
-				}`,
+				text: `${title}`,
 				fontSize: 22,
 				fontWeight: '400',
 				textAlign: 'center',
@@ -169,7 +163,7 @@ const HorizontalBarChart = ({ measures, dimension }: BarChartProps) => {
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error, dimension, rootId, measures]);
+	}, [resultSet, isLoading, error, dimension, rootId, measures, title]);
 
 	return <div id={rootId} className='chart'></div>;
 };

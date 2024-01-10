@@ -37,14 +37,20 @@ const items: CollapseProps['items'] = [
 				</Col>
 				<Col className='chart_layout'>
 					<HorizontalBarChart
-						measures='pps.count'
-						dimension='pps.science_rank'
+						filters={{
+							measures: 'pps.count',
+							dimension: 'pps.science_rank',
+							title: 'Количество ППС по ученому званию',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>
 					<HorizontalBarChart
-						measures='pps.count'
-						dimension='pps.science_degree'
+						filters={{
+							measures: 'pps.count',
+							dimension: 'pps.science_degree',
+							title: 'Количество ППС по ученой степени',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -60,14 +66,20 @@ const items: CollapseProps['items'] = [
 			<Row className='charts'>
 				<Col className='chart_layout'>
 					<HorizontalBarChart
-						measures='student.count'
-						dimension='student.finance_type'
+						filters={{
+							measures: 'student.count',
+							dimension: 'student.finance_type',
+							title: 'Вид финансирования (по количеству студентов',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>
 					<HorizontalBarChart
-						measures='student.count'
-						dimension='student.specialty'
+						filters={{
+							measures: 'student.count',
+							dimension: 'student.specialty',
+							title: 'Количество обучающихя студентов по специальности',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>
