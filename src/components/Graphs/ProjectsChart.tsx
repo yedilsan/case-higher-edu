@@ -11,13 +11,23 @@ interface DataItem {
 	year: number;
 }
 
-const ProjectsChart = () => {
+interface ProjectsChartProps {
+	filters: {
+		measures: string;
+		dimension: string[];
+		title: string;
+	};
+}
+
+const ProjectsChart = ({
+	filters: { measures, dimension, title },
+}: ProjectsChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
-			measures: ['projects.funding_amount'],
-			dimensions: ['projects.funding_source', 'projects.year'],
+			measures: [`${measures}`],
+			dimensions: dimension,
 			order: {
-				'projects.year': 'asc',
+				[`${dimension[1]}`]: 'asc',
 			},
 		},
 		{ cubejsApi }
@@ -33,9 +43,9 @@ const ProjectsChart = () => {
 		}
 
 		const data: DataItem[] = resultSet.tablePivot().map(row => ({
-			value: Number(row['projects.funding_amount']),
-			source: String(row['projects.funding_source']),
-			year: Number(row['projects.year']),
+			value: Number(row[`${measures}`]),
+			source: String(row[dimension[0]]),
+			year: Number(row[dimension[1]]),
 		}));
 
 		const root = am5.Root.new('ProjectsChart');
@@ -131,12 +141,12 @@ const ProjectsChart = () => {
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error]);
+	}, [resultSet, isLoading, error, measures, dimension]);
 
 	return (
 		<div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
 			<div>
-				<h3>Объем финансирования проектов по источнику</h3>
+				<h3>{title}</h3>
 				<div id='ProjectsChart' className='chart_full'></div>
 			</div>
 		</div>
