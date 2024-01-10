@@ -1,6 +1,7 @@
 import * as am5 from '@amcharts/amcharts5';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5xy from '@amcharts/amcharts5/xy';
+import { TQueryOrderObject } from '@cubejs-client/core';
 import { useCubeQuery } from '@cubejs-client/react';
 import { useEffect } from 'react';
 import cubejsApi from '../cubejsConfig';
@@ -15,20 +16,21 @@ interface ProjectsChartProps {
 	filters: {
 		measures: string;
 		dimension: string[];
+		orderBy: string[];
 		title: string;
 	};
 }
 
 const ProjectsChart = ({
-	filters: { measures, dimension, title },
+	filters: { measures, dimension, orderBy, title },
 }: ProjectsChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],
 			dimensions: dimension,
 			order: {
-				[`${dimension[1]}`]: 'asc',
-			},
+				[`${orderBy[0]}`]: orderBy[1],
+			} as TQueryOrderObject,
 		},
 		{ cubejsApi }
 	);

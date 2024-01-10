@@ -1,6 +1,7 @@
 import * as am5 from '@amcharts/amcharts5';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5xy from '@amcharts/amcharts5/xy';
+import { TQueryOrderObject } from '@cubejs-client/core';
 import { useCubeQuery } from '@cubejs-client/react';
 import { useEffect } from 'react';
 import cubejsApi from '../cubejsConfig';
@@ -14,20 +15,21 @@ interface StackedColumnChart {
 	filters: {
 		measures: string;
 		dimension: string[];
+		orderBy: string[];
 		title: string;
 	};
 }
 
 const StackedColumnChart = ({
-	filters: { measures, dimension, title },
+	filters: { measures, dimension, orderBy, title },
 }: StackedColumnChart) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],
 			dimensions: dimension,
 			order: {
-				'student.admission_year': 'asc',
-			},
+				[`${orderBy[0]}`]: orderBy[1],
+			} as TQueryOrderObject,
 		},
 		{ cubejsApi }
 	);
