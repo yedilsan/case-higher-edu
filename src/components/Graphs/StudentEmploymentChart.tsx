@@ -10,16 +10,23 @@ interface DataItem {
 	year: number;
 }
 
-const StudentEmploymentChart = () => {
+interface StudentEmploymentChartProps {
+	filters: {
+		measures?: string;
+		dimension: string[];
+		orderBy: string;
+		title: string;
+	};
+}
+
+const StudentEmploymentChart = ({
+	filters: { dimension, orderBy, title },
+}: StudentEmploymentChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
-			dimensions: [
-				'students_employment.year',
-				'students_employment.percent',
-				'students_employment.specialty',
-			],
+			dimensions: dimension,
 			order: {
-				'students_employment.year': 'asc',
+				[`${orderBy}`]: 'asc',
 			},
 		},
 		{ cubejsApi }
@@ -35,8 +42,8 @@ const StudentEmploymentChart = () => {
 		}
 
 		const rawData: DataItem[] = resultSet.tablePivot().map(row => ({
-			value: Number(row['students_employment.percent']),
-			year: Number(row['students_employment.year']),
+			value: Number(row[dimension[1]]),
+			year: Number(row[dimension[0]]),
 		}));
 
 		const yearToDataMap = new Map<number, number[]>();
@@ -132,12 +139,12 @@ const StudentEmploymentChart = () => {
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error]);
+	}, [resultSet, isLoading, error, dimension]);
 
 	return (
 		<div style={{ margin: '10px', display: 'flex', justifyContent: 'center' }}>
 			<div>
-				<h3>Показатели трудоустройства выпускников в процентах</h3>
+				<h3>{title}</h3>
 				<div id='StudentEmploymentChart' className='chart_full'></div>
 			</div>
 		</div>
