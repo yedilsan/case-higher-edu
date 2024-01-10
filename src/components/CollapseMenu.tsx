@@ -60,7 +60,13 @@ const items: CollapseProps['items'] = [
 					/>
 				</Col>
 				<Col className='chart_layout'>
-					<ColumnDateAxisChart measures='pps.count' dimension='pps.age' />
+					<ColumnDateAxisChart
+						filter={{
+							measures: 'pps.count',
+							dimension: 'pps.age',
+							title: 'Количество ППС по возрастной категории',
+						}}
+					/>
 				</Col>
 			</Row>
 		),

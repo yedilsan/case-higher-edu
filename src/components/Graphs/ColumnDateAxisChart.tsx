@@ -12,13 +12,15 @@ interface DataItem {
 }
 
 interface ColumnDateAxisChartProps {
-	measures: string;
-	dimension: string;
+	filter: {
+		measures: string;
+		dimension: string;
+		title: string;
+	};
 }
 
 const ColumnDateAxisChart = ({
-	measures,
-	dimension,
+	filter: { measures, dimension, title },
 }: ColumnDateAxisChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
@@ -122,7 +124,7 @@ const ColumnDateAxisChart = ({
 
 		chart.children.unshift(
 			am5.Label.new(root, {
-				text: 'Количество ППС по возрастной категории',
+				text: `${title}`,
 				fontSize: 22,
 				fontWeight: '400',
 				textAlign: 'center',
@@ -153,7 +155,7 @@ const ColumnDateAxisChart = ({
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error, dimension, rootId, measures]);
+	}, [resultSet, isLoading, error, dimension, rootId, measures, title]);
 
 	return <div id={rootId} className='chart'></div>;
 };
