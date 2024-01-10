@@ -11,11 +11,16 @@ interface DataItem {
 }
 
 interface ColumnChartProps {
-	measures: string;
-	dimension: string;
+	filters: {
+		measures: string;
+		dimension: string;
+		title: string;
+	};
 }
 
-const ColumnChart = ({ measures, dimension }: ColumnChartProps) => {
+const ColumnChart = ({
+	filters: { measures, dimension, title },
+}: ColumnChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],
@@ -139,13 +144,7 @@ const ColumnChart = ({ measures, dimension }: ColumnChartProps) => {
 
 		chart.children.unshift(
 			am5.Label.new(root, {
-				text: `${
-					dimension === 'student.citizenship'
-						? 'Контингент студентов'
-						: dimension === 'student.socially_vulnerable'
-						? 'Принадлежность к социально-уязвимым слоям'
-						: ''
-				}`,
+				text: `${title}`,
 				fontSize: 22,
 				fontWeight: '400',
 				textAlign: 'center',
@@ -163,7 +162,7 @@ const ColumnChart = ({ measures, dimension }: ColumnChartProps) => {
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error, dimension, rootId, measures]);
+	}, [resultSet, isLoading, error, dimension, rootId, measures, title]);
 
 	return <div id={rootId} className='chart'></div>;
 };

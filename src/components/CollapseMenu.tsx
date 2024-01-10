@@ -96,8 +96,11 @@ const items: CollapseProps['items'] = [
 				</Col>
 				<Col className='chart_layout'>
 					<ColumnChart
-						measures='student.count'
-						dimension='student.citizenship'
+						filters={{
+							measures: 'student.count',
+							dimension: 'student.citizenship',
+							title: 'Контингент студентов',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -111,8 +114,11 @@ const items: CollapseProps['items'] = [
 				</Col>
 				<Col className='chart_layout'>
 					<ColumnChart
-						measures='student.count'
-						dimension='student.socially_vulnerable'
+						filters={{
+							measures: 'student.count',
+							dimension: 'student.socially_vulnerable',
+							title: 'Принадлежность к социально-уязвимым слоям',
+						}}
 					/>
 				</Col>
 			</Row>
