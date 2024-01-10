@@ -11,11 +11,16 @@ interface LanguageData {
 }
 
 interface StackedColumnChart {
-	measures: string;
-	dimension: string[];
+	filters: {
+		measures: string;
+		dimension: string[];
+		title: string;
+	};
 }
 
-const StackedColumnChart = ({ measures, dimension }: StackedColumnChart) => {
+const StackedColumnChart = ({
+	filters: { measures, dimension, title },
+}: StackedColumnChart) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],
@@ -169,7 +174,7 @@ const StackedColumnChart = ({ measures, dimension }: StackedColumnChart) => {
 		}
 		chart.children.unshift(
 			am5.Label.new(root, {
-				text: 'Количество обучающихся студентов по году поступления',
+				text: `${title}`,
 				fontSize: 22,
 				fontWeight: '400',
 				textAlign: 'center',
@@ -190,7 +195,7 @@ const StackedColumnChart = ({ measures, dimension }: StackedColumnChart) => {
 		return () => {
 			root.dispose();
 		};
-	}, [resultSet, isLoading, error, measures, dimension]);
+	}, [resultSet, isLoading, error, measures, dimension, title]);
 
 	const rootId = `StackedColumnChart`;
 	return <div id={rootId} className='chart'></div>;

@@ -90,8 +90,11 @@ const items: CollapseProps['items'] = [
 				</Col>
 				<Col className='chart_layout'>
 					<StackedColumnChart
-						measures='student.count'
-						dimension={['student.admission_year', 'student.study_language']}
+						filters={{
+							measures: 'student.count',
+							dimension: ['student.admission_year', 'student.study_language'],
+							title: 'Количество обучающихся студентов по году поступления',
+						}}
 					/>
 				</Col>
 				<Col className='chart_layout'>
