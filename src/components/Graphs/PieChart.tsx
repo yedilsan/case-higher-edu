@@ -14,12 +14,12 @@ interface PieChartProps {
 	filters: {
 		measures: string;
 		dimension: string;
-		title: string;
 	};
+	title: string;
 }
 
-const PieChart = ({ filters }: PieChartProps) => {
-	const { measures, dimension, title } = filters;
+const PieChart = ({ filters, title }: PieChartProps) => {
+	const { measures, dimension } = filters;
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],

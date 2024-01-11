@@ -16,12 +16,13 @@ interface StackedColumnChart {
 		measures: string;
 		dimension: string[];
 		orderBy: string[];
-		title: string;
 	};
+	title: string;
 }
 
 const StackedColumnChart = ({
-	filters: { measures, dimension, orderBy, title },
+	filters: { measures, dimension, orderBy },
+	title,
 }: StackedColumnChart) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{

@@ -14,12 +14,12 @@ interface BarChartProps {
 	filters: {
 		measures: string;
 		dimension: string;
-		title: string;
 	};
+	title: string;
 }
 
-const HorizontalBarChart = ({ filters }: BarChartProps) => {
-	const { measures, dimension, title } = filters;
+const HorizontalBarChart = ({ filters, title }: BarChartProps) => {
+	const { measures, dimension } = filters;
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
 			measures: [`${measures}`],

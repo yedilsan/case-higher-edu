@@ -17,12 +17,13 @@ interface ProjectsChartProps {
 		measures: string;
 		dimension: string[];
 		orderBy: string[];
-		title: string;
 	};
+	title: string;
 }
 
 const ProjectsChart = ({
-	filters: { measures, dimension, orderBy, title },
+	filters: { measures, dimension, orderBy },
+	title,
 }: ProjectsChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{

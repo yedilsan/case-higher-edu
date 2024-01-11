@@ -14,12 +14,13 @@ interface ColumnChartProps {
 	filters: {
 		measures: string;
 		dimension: string;
-		title: string;
 	};
+	title: string;
 }
 
 const ColumnChart = ({
-	filters: { measures, dimension, title },
+	filters: { measures, dimension },
+	title,
 }: ColumnChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{

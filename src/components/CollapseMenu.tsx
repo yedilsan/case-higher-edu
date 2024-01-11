@@ -37,8 +37,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'pps.count',
 							dimension: 'pps.citizenship',
-							title: 'Гражданство преподавателей',
 						}}
+						title='Гражданство преподавателей'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -46,8 +46,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'pps.count',
 							dimension: 'pps.science_rank',
-							title: 'Количество ППС по ученому званию',
 						}}
+						title='Количество ППС по ученому званию'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -55,17 +55,17 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'pps.count',
 							dimension: 'pps.science_degree',
-							title: 'Количество ППС по ученой степени',
 						}}
+						title='Количество ППС по ученой степени'
 					/>
 				</Col>
 				<Col className='chart_layout'>
 					<ColumnDateAxisChart
-						filter={{
+						filters={{
 							measures: 'pps.count',
 							dimension: 'pps.age',
-							title: 'Количество ППС по возрастной категории',
 						}}
+						title='Количество ППС по возрастной категории'
 					/>
 				</Col>
 			</Row>
@@ -81,8 +81,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'student.count',
 							dimension: 'student.finance_type',
-							title: 'Вид финансирования (по количеству студентов',
 						}}
+						title='Вид финансирования (по количеству студентов'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -90,8 +90,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'student.count',
 							dimension: 'student.specialty',
-							title: 'Количество обучающихя студентов по специальности',
 						}}
+						title='Количество обучающихя студентов по специальности'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -100,8 +100,8 @@ const items: CollapseProps['items'] = [
 							measures: 'student.count',
 							dimension: ['student.admission_year', 'student.study_language'],
 							orderBy: ['student.admission_year', 'asc'],
-							title: 'Количество обучающихся студентов по году поступления',
 						}}
+						title='Количество обучающихся студентов по году поступления'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -109,8 +109,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'student.count',
 							dimension: 'student.citizenship',
-							title: 'Контингент студентов',
 						}}
+						title='Контингент студентов'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -118,8 +118,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'student.count',
 							dimension: 'student.last_education_type',
-							title: 'Вид учебного заведения (предыдущее образование)',
 						}}
+						title='Вид учебного заведения (предыдущее образование)'
 					/>
 				</Col>
 				<Col className='chart_layout'>
@@ -127,8 +127,8 @@ const items: CollapseProps['items'] = [
 						filters={{
 							measures: 'student.count',
 							dimension: 'student.socially_vulnerable',
-							title: 'Принадлежность к социально-уязвимым слоям',
 						}}
+						title='Принадлежность к социально-уязвимым слоям'
 					/>
 				</Col>
 			</Row>
@@ -143,8 +143,8 @@ const items: CollapseProps['items'] = [
 					measures: 'projects.funding_amount',
 					dimension: ['projects.funding_source', 'projects.year'],
 					orderBy: ['projects.year', 'asc'],
-					title: 'Объем финансирования проектов по источнику',
 				}}
+				title='Объем финансирования проектов по источнику'
 			/>
 		),
 	},
@@ -160,8 +160,8 @@ const items: CollapseProps['items'] = [
 						'students_employment.specialty',
 					],
 					orderBy: ['students_employment.year', 'asc'],
-					title: 'Показатели трудоустройства выпускников в процентах',
 				}}
+				title='Показатели трудоустройства выпускников в процентах'
 			/>
 		),
 	},

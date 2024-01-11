@@ -12,15 +12,16 @@ interface DataItem {
 }
 
 interface ColumnDateAxisChartProps {
-	filter: {
+	filters: {
 		measures: string;
 		dimension: string;
-		title: string;
 	};
+	title: string;
 }
 
 const ColumnDateAxisChart = ({
-	filter: { measures, dimension, title },
+	filters: { measures, dimension },
+	title,
 }: ColumnDateAxisChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{

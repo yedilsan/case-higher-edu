@@ -16,12 +16,13 @@ interface StudentEmploymentChartProps {
 		measures?: string;
 		dimension: string[];
 		orderBy: string[];
-		title: string;
 	};
+	title: string;
 }
 
 const StudentEmploymentChart = ({
-	filters: { dimension, orderBy, title },
+	filters: { dimension, orderBy },
+	title,
 }: StudentEmploymentChartProps) => {
 	const { resultSet, isLoading, error } = useCubeQuery(
 		{
