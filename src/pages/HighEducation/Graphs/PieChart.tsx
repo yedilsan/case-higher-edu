@@ -1,9 +1,8 @@
 import * as am5 from '@amcharts/amcharts5';
 import * as am5percent from '@amcharts/amcharts5/percent';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
-import { useCubeQuery } from '@cubejs-client/react';
 import { useEffect } from 'react';
-import cubejsApi from '../cubejsConfig';
+import { useCubeData } from '../hooks/useCubeData';
 
 interface DataItem {
 	value: number;
@@ -13,20 +12,14 @@ interface DataItem {
 interface PieChartProps {
 	filters: {
 		measures: string;
-		dimension: string;
+		dimension: string[];
 	};
 	title: string;
 }
 
 const PieChart = ({ filters, title }: PieChartProps) => {
 	const { measures, dimension } = filters;
-	const { resultSet, isLoading, error } = useCubeQuery(
-		{
-			measures: [`${measures}`],
-			dimensions: [`${dimension}`],
-		},
-		{ cubejsApi }
-	);
+	const { resultSet, isLoading, error } = useCubeData({ measures, dimension });
 
 	const rootId = `PieChart_${dimension}`;
 	useEffect(() => {

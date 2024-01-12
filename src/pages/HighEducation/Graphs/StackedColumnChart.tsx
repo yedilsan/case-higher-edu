@@ -1,10 +1,8 @@
 import * as am5 from '@amcharts/amcharts5';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5xy from '@amcharts/amcharts5/xy';
-import { TQueryOrderObject } from '@cubejs-client/core';
-import { useCubeQuery } from '@cubejs-client/react';
 import { useEffect } from 'react';
-import cubejsApi from '../cubejsConfig';
+import { useCubeData } from '../hooks/useCubeData';
 
 interface LanguageData {
 	year: string;
@@ -24,16 +22,11 @@ const StackedColumnChart = ({
 	filters: { measures, dimension, orderBy },
 	title,
 }: StackedColumnChart) => {
-	const { resultSet, isLoading, error } = useCubeQuery(
-		{
-			measures: [`${measures}`],
-			dimensions: dimension,
-			order: {
-				[`${orderBy[0]}`]: orderBy[1],
-			} as TQueryOrderObject,
-		},
-		{ cubejsApi }
-	);
+	const { resultSet, isLoading, error } = useCubeData({
+		measures,
+		dimension,
+		orderBy,
+	});
 
 	useEffect(() => {
 		if (error) {

@@ -1,9 +1,8 @@
 import * as am5 from '@amcharts/amcharts5';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5xy from '@amcharts/amcharts5/xy';
-import { useCubeQuery } from '@cubejs-client/react';
 import { useEffect } from 'react';
-import cubejsApi from '../cubejsConfig';
+import { useCubeData } from '../hooks/useCubeData';
 
 interface DataItem {
 	value: number;
@@ -13,23 +12,20 @@ interface DataItem {
 interface BarChartProps {
 	filters: {
 		measures: string;
-		dimension: string;
+		dimension: string[];
+		orderBy?: string[];
 	};
 	title: string;
 }
 
 const HorizontalBarChart = ({ filters, title }: BarChartProps) => {
-	const { measures, dimension } = filters;
-	const { resultSet, isLoading, error } = useCubeQuery(
-		{
-			measures: [`${measures}`],
-			dimensions: [`${dimension}`],
-			order: {
-				[`${measures}`]: 'asc',
-			},
-		},
-		{ cubejsApi }
-	);
+	const { measures, dimension, orderBy } = filters;
+	const { resultSet, isLoading, error } = useCubeData({
+		measures,
+		dimension,
+		orderBy,
+	});
+
 	const rootId = `HorizontalBarChart_${dimension}`;
 	useEffect(() => {
 		if (error) {
@@ -57,7 +53,7 @@ const HorizontalBarChart = ({ filters, title }: BarChartProps) => {
 				panX: false,
 				panY: false,
 				wheelX: 'panX',
-				wheelY: 'zoomY',
+				wheelY: 'panY',
 				paddingLeft: 0,
 				layout: root.verticalLayout,
 			})

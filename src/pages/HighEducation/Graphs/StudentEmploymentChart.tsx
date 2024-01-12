@@ -1,10 +1,8 @@
 import * as am5 from '@amcharts/amcharts5';
 import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 import * as am5xy from '@amcharts/amcharts5/xy';
-import { TQueryOrderObject } from '@cubejs-client/core';
-import { useCubeQuery } from '@cubejs-client/react';
 import { useEffect } from 'react';
-import cubejsApi from '../cubejsConfig';
+import { useCubeData } from '../hooks/useCubeData';
 
 interface DataItem {
 	value: number;
@@ -13,7 +11,6 @@ interface DataItem {
 
 interface StudentEmploymentChartProps {
 	filters: {
-		measures?: string;
 		dimension: string[];
 		orderBy: string[];
 	};
@@ -24,15 +21,7 @@ const StudentEmploymentChart = ({
 	filters: { dimension, orderBy },
 	title,
 }: StudentEmploymentChartProps) => {
-	const { resultSet, isLoading, error } = useCubeQuery(
-		{
-			dimensions: dimension,
-			order: {
-				[`${orderBy[0]}`]: orderBy[1],
-			} as TQueryOrderObject,
-		},
-		{ cubejsApi }
-	);
+	const { resultSet, isLoading, error } = useCubeData({ dimension, orderBy });
 
 	useEffect(() => {
 		if (error) {

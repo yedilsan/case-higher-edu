@@ -1,12 +1,12 @@
 import { Col, Collapse, CollapseProps, Row } from 'antd';
-import TreeData from '../components/TreeTable';
-import ColumnChart from './Graphs/ColumnChart';
-import ColumnDateAxisChart from './Graphs/ColumnDateAxisChart';
-import HorizontalBarChart from './Graphs/HorizontalBarChart';
-import PieChart from './Graphs/PieChart';
-import ProjectsChart from './Graphs/ProjectsChart';
-import StackedColumnChart from './Graphs/StackedColumnChart';
-import StudentEmployment from './Graphs/StudentEmploymentChart';
+import ColumnChart from '../Graphs/ColumnChart';
+import ColumnDateAxisChart from '../Graphs/ColumnDateAxisChart';
+import HorizontalBarChart from '../Graphs/HorizontalBarChart';
+import PieChart from '../Graphs/PieChart';
+import ProjectsChart from '../Graphs/ProjectsChart';
+import StackedColumnChart from '../Graphs/StackedColumnChart';
+import StudentEmploymentChart from '../Graphs/StudentEmploymentChart';
+import TreeData from './TreeTable';
 import './component.css';
 
 const items: CollapseProps['items'] = [
@@ -36,7 +36,7 @@ const items: CollapseProps['items'] = [
 					<PieChart
 						filters={{
 							measures: 'pps.count',
-							dimension: 'pps.citizenship',
+							dimension: ['pps.citizenship'],
 						}}
 						title='Гражданство преподавателей'
 					/>
@@ -45,7 +45,8 @@ const items: CollapseProps['items'] = [
 					<HorizontalBarChart
 						filters={{
 							measures: 'pps.count',
-							dimension: 'pps.science_rank',
+							dimension: ['pps.science_rank'],
+							orderBy: ['pps.count', 'asc'],
 						}}
 						title='Количество ППС по ученому званию'
 					/>
@@ -54,7 +55,8 @@ const items: CollapseProps['items'] = [
 					<HorizontalBarChart
 						filters={{
 							measures: 'pps.count',
-							dimension: 'pps.science_degree',
+							dimension: ['pps.science_degree'],
+							orderBy: ['pps.count', 'asc'],
 						}}
 						title='Количество ППС по ученой степени'
 					/>
@@ -63,7 +65,7 @@ const items: CollapseProps['items'] = [
 					<ColumnDateAxisChart
 						filters={{
 							measures: 'pps.count',
-							dimension: 'pps.age',
+							dimension: ['pps.age'],
 						}}
 						title='Количество ППС по возрастной категории'
 					/>
@@ -80,7 +82,8 @@ const items: CollapseProps['items'] = [
 					<HorizontalBarChart
 						filters={{
 							measures: 'student.count',
-							dimension: 'student.finance_type',
+							dimension: ['student.finance_type'],
+							orderBy: ['student.count', 'asc'],
 						}}
 						title='Вид финансирования (по количеству студентов'
 					/>
@@ -89,7 +92,8 @@ const items: CollapseProps['items'] = [
 					<HorizontalBarChart
 						filters={{
 							measures: 'student.count',
-							dimension: 'student.specialty',
+							dimension: ['student.specialty'],
+							orderBy: ['student.count', 'asc'],
 						}}
 						title='Количество обучающихя студентов по специальности'
 					/>
@@ -108,7 +112,8 @@ const items: CollapseProps['items'] = [
 					<ColumnChart
 						filters={{
 							measures: 'student.count',
-							dimension: 'student.citizenship',
+							dimension: ['student.citizenship'],
+							orderBy: ['student.count', 'desc'],
 						}}
 						title='Контингент студентов'
 					/>
@@ -117,7 +122,7 @@ const items: CollapseProps['items'] = [
 					<PieChart
 						filters={{
 							measures: 'student.count',
-							dimension: 'student.last_education_type',
+							dimension: ['student.last_education_type'],
 						}}
 						title='Вид учебного заведения (предыдущее образование)'
 					/>
@@ -126,7 +131,8 @@ const items: CollapseProps['items'] = [
 					<ColumnChart
 						filters={{
 							measures: 'student.count',
-							dimension: 'student.socially_vulnerable',
+							dimension: ['student.socially_vulnerable'],
+							orderBy: ['student.count', 'desc'],
 						}}
 						title='Принадлежность к социально-уязвимым слоям'
 					/>
@@ -152,7 +158,7 @@ const items: CollapseProps['items'] = [
 		key: '5',
 		label: 'Трудоустройство выпускников',
 		children: (
-			<StudentEmployment
+			<StudentEmploymentChart
 				filters={{
 					dimension: [
 						'students_employment.year',
