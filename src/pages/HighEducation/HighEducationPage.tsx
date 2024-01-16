@@ -1,5 +1,5 @@
-import CollapseMenu from '../../components/CollapseMenu';
 import Filter from '../../components/Filter';
+import CollapseMenu from './components/CollapseMenu';
 
 const HighEducationPage = () => {
 	return (
